@@ -1,0 +1,46 @@
+<!-- logback.xml -->
+
+<configuration>
+
+    <!-- Appenders -->
+    <!-- Аппендер для вывода логов в консоль -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Аппендер для вывода логов в файл -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- Путь к файлу логов внутри проекта -->
+        <file>logs/myApp.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <!-- Конфигурация ротации и размера файла -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/myapp.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Logger для уровня ERROR -->
+    <logger name="com.example" level="ERROR"/>
+
+    <!-- Logger для уровня DEBUG -->
+    <logger name="com.example" level="DEBUG"/>
+
+    <!-- Logger для уровня WRONG -->
+    <logger name="com.example" level="WRONG"/>
+
+
+    <!-- Root logger -->
+    <!-- Корневой логгер с уровнем логирования info -->
+    <root level="info">
+        <!-- Ссылки на аппендеры для корневого логгера -->
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

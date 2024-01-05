@@ -1,0 +1,17 @@
+.container{
+    max-width: 1200px;
+    
+}
+
+.body{
+    background-color:darkgrey;
+}
+
+.table{
+    background-color:floralwhite;
+}
+
+.navbar{
+    background-color: floralwhite;
+}
+
